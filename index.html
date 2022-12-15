@@ -7,9 +7,21 @@ canvas {
     border:1px solid #d3d3d3;
     background-color: #f1f1f1;
 }
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
 </style>
 </head>
-<body onload="startGame()">
+<div class="container">
+    <body onload="startGame()"></body>
+
+</div>
+
 <script>
 
 var myGamePiece;
@@ -17,8 +29,8 @@ var myObstacles = [];
 var myScore;
 
 function startGame() {
-    myGamePiece = new component(30, 30, "red", 10, 120);
-    myGamePiece.gravity = 0.05;
+    myGamePiece = new component(30, 30, "blue", 10, 120);
+    myGamePiece.gravity = 0.5;
     myScore = new component("30px", "Consolas", "black", 280, 40, "text");
     myGameArea.start();
 }
@@ -26,8 +38,8 @@ function startGame() {
 var myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
-        this.canvas.width = 480;
-        this.canvas.height = 270;
+        this.canvas.width = 600;
+        this.canvas.height = 600;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
